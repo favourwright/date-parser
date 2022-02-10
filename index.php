@@ -16,19 +16,19 @@
             <img class="git" src="GitHub-Mark-64px.png" alt="github">
             <a class="profile primary code" href="http://github.com/favourwright/date-parser">favourwright/date-parser</a>
         </nav>
-        <h1 class="outline white"><span style="color:#fff">HUMAN</span>-READABLE <br />DATES</h1>
+        <h1 class="outline white"><span style="color:#fff">HUMAN</span>-READABLE <br /><span style="color:#fff">DATE</span> FORMATER</h1>
         <h2 class="notice code">tons of libraries exist that handle dates in more ways than one, this is just a light-weight script</h2>
         <form name="form" method="post" action="script.php">
             <label for="date">EG: 2018-06-25 08:33:42</label>
             <input type="text" placeholder="Enter raw date" name="date" id="date">
 
             <select name="parser" id="parser">
-                <option value="elaborate" selected="selected">elaborate</option>
+                <option value="time-ago" selected="selected">time ago</option>
                 <option value="normal">normal</option>
             </select>
         </form>
         <div class="modal">
-            
+            <h2></h2>
         </div>
     </main>
     <script src="form.js"></script>

@@ -14,12 +14,9 @@ class Timing
     public function __construct()
     {
         date_default_timezone_set("Africa/Lagos");
-
         $request_body = file_get_contents('php://input');
         $__POST = json_decode($request_body, true);
-        
         $this->rawDate = isset($__POST['raw_date']) ? $__POST['raw_date'] : null;
-        $this->parse_type = isset($__POST['parse_type']) ? $__POST['parse_type'] : null;
     }
 
     public function themeTiming()
@@ -206,5 +203,5 @@ class Timing
 // run em
 $result = new Timing();
 if(isset($__POST)){
-    echo $__POST['parse_type']=='elaborate' ? $result->elaborateDateParser() : $result->dateParser();
+    echo $__POST['parse_type']=='time-ago' ? $result->elaborateDateParser() : $result->dateParser();
 }

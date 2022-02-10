@@ -1,10 +1,12 @@
 <?php
+// for some reason the $_POST super-global is empty...
+// this is a work-around
+$request_body = file_get_contents('php://input');
+$__POST = json_decode($request_body, true);
 
-// use Date;
 class Timing
 {
     private $rawDate;
-    private $parse_type;
     /**
      * Just figured that this timezone setting is still
      * important
@@ -12,9 +14,12 @@ class Timing
     public function __construct()
     {
         date_default_timezone_set("Africa/Lagos");
-        return 200;
-        $this->firstName = isset($_POST['first_name']) ? $_POST['first_name'] : null;
-        $this->lastName = isset($_POST['last_name']) ? $_POST['last_name'] : null;
+
+        $request_body = file_get_contents('php://input');
+        $__POST = json_decode($request_body, true);
+        
+        $this->rawDate = isset($__POST['raw_date']) ? $__POST['raw_date'] : null;
+        $this->parse_type = isset($__POST['parse_type']) ? $__POST['parse_type'] : null;
     }
 
     public function themeTiming()
@@ -64,9 +69,9 @@ class Timing
     }
 
     // parse a raw date to display a more user friendly, readable output
-    public function dateParser($rawDate)
+    public function dateParser()
     {
-        $converted   = strtotime($rawDate);
+        $converted   = strtotime($this->rawDate);
         $currentTime = time();
         $timeDiff    = $currentTime - $converted;
         $seconds     = $timeDiff;
@@ -113,13 +118,11 @@ class Timing
     /**
      * Called elaborate because its more detailed than the previous
      *
-     * @param string $rawDate datetime string
-     *
      * @return string human readable date
      */
-    public function elaborateDateParser($rawDate)
+    public function elaborateDateParser()
     {
-        $converted   = strtotime($rawDate);
+        $converted   = strtotime($this->rawDate);
         $currentTime = time();
         $timeDiff    = $currentTime - $converted;
         $seconds     = $timeDiff;
@@ -182,14 +185,12 @@ class Timing
     /**
      * Gets number of days from a past date
      *
-     * @param string $rawDate
-     *
      * @return int $days
      */
-    public function getDateDays($rawDate)
+    public function getDateDays()
     {
         # function to return the number of days ofset from current day
-        $converted   = strtotime($rawDate);
+        $converted   = strtotime($this->rawDate);
         $currentTime = time();
         $timeDiff    = $currentTime - $converted;
         $seconds     = $timeDiff;
@@ -201,4 +202,9 @@ class Timing
         // return the number of days
         return $days;
     }
+}
+// run em
+$result = new Timing();
+if(isset($__POST)){
+    echo $__POST['parse_type']=='elaborate' ? $result->elaborateDateParser() : $result->dateParser();
 }

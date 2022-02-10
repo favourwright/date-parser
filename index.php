@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
     <link rel="stylesheet" href="main.css">
     <script src="axios.js"></script>
-    <title>Document</title>
+    <title>Date Parser</title>
 </head>
 <body>
     <main>
@@ -18,7 +18,7 @@
         </nav>
         <h1 class="outline white"><span style="color:#fff">HUMAN</span>-READABLE <br />DATES</h1>
         <h2 class="notice code">tons of libraries exist that handle dates in more ways than one, this is just a light-weight script</h2>
-        <form name="form" method="POST" action="">
+        <form name="form" method="post" action="script.php">
             <label for="date">EG: 2018-06-25 08:33:42</label>
             <input type="text" placeholder="Enter raw date" name="date" id="date">
 

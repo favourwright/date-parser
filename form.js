@@ -3,11 +3,11 @@ const Parse = form=>{
     const select = form.querySelector('select').value
     if(input!=''){
         axios.post('script.php', {
-            rawDate: input,
+            raw_date: input,
             parse_type: select
         })
-        .then(response=>{
-            console.log(response)
+        .then(({data})=>{
+            console.log(data)
         })
         .catch(error=>{
             console.log(error)

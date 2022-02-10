@@ -156,7 +156,7 @@ select{
     h1 {font-size:50px;}
     main{padding:0 32px;}
     nav{padding:0 32px;}
-    .modal{left:5%;width:73%;}
+    .modal{left:5%;right:5%;width: unset;}
 }
 /* @media (min-width: 451px) and (max-width: 540px) {
 }

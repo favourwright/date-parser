@@ -14,6 +14,7 @@ const Modal=data=>{
     }, 5000)
 }
 const Parse = form=>{
+    Modal('Hi')
     const input = form.querySelector('input').value
     const select = form.querySelector('select').value
     if(input!=''){
@@ -21,8 +22,8 @@ const Parse = form=>{
             raw_date: input,
             parse_type: select
         })
-        .then(({data})=>Modal(data))
-        .catch(error=>console.log(error))
+        // .then(({data})=>Modal(data))
+        // .catch(error=>console.log(error))
     }
 }
 const Bootstrap = ()=>{
